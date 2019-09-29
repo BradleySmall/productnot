@@ -10,7 +10,7 @@ If there are more than one zeros in the list, then every element will be zero
 If the list has 1 or less elements the result is [0]
 """
 import random
-
+from functools import reduce
 
 def main():
     """
@@ -25,6 +25,10 @@ def main():
         new_list = apply_product(random_list)
         print(new_list)
 
+    print("One Liner no division")
+    print([reduce(lambda a, b: a *b,
+                  [ y for x, y in enumerate(random_list) if x != idx])
+           for idx, _ in enumerate(random_list)])
 
 def apply_product(the_list):
     """
